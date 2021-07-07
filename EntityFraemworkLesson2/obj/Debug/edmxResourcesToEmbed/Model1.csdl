@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Booking_GnidezModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Booking_GnidezEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Rents" EntityType="Booking_GnidezModel.Rents" />
+    <EntitySet Name="Rooms" EntityType="Booking_GnidezModel.Room" />
+    <EntitySet Name="Users" EntityType="Booking_GnidezModel.User" />
+    <AssociationSet Name="FK__Rents__RoomId__45F365D3" Association="Booking_GnidezModel.FK__Rents__RoomId__45F365D3">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="Rent" EntitySet="Rents" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rents__UserId__44FF419A" Association="Booking_GnidezModel.FK__Rents__UserId__44FF419A">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Rent" EntitySet="Rents" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Rents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
+    <Property Name="DateFrom" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateTo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RoomId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Room" Relationship="Booking_GnidezModel.FK__Rents__RoomId__45F365D3" FromRole="Rent" ToRole="Room" />
+    <NavigationProperty Name="User" Relationship="Booking_GnidezModel.FK__Rents__UserId__44FF419A" FromRole="Rent" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Area" Type="Single" Nullable="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Rents" Relationship="Booking_GnidezModel.FK__Rents__RoomId__45F365D3" FromRole="Room" ToRole="Rent" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Rents" Relationship="Booking_GnidezModel.FK__Rents__UserId__44FF419A" FromRole="User" ToRole="Rent" />
+  </EntityType>
+  <Association Name="FK__Rents__RoomId__45F365D3">
+    <End Type="Booking_GnidezModel.Room" Role="Room" Multiplicity="1" />
+    <End Type="Booking_GnidezModel.Rents" Role="Rent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rent">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rents__UserId__44FF419A">
+    <End Type="Booking_GnidezModel.User" Role="User" Multiplicity="1" />
+    <End Type="Booking_GnidezModel.Rents" Role="Rent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rent">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
