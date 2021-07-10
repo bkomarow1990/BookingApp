@@ -12,7 +12,9 @@ namespace EntityFraemworkLesson2
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    using System.Linq;
+    using System.Windows;
+
     public partial class Booking_GnidezEntities : DbContext
     {
         public Booking_GnidezEntities()
@@ -24,7 +26,31 @@ namespace EntityFraemworkLesson2
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
+        internal User GetLogin(string login, string password)
+        {
+            return this.Users.Where(e => e.Login == login && e.Password == password).First();
+        }
+        internal void Register(string login, string password)
+        {
+            try {
+                if (String.IsNullOrWhiteSpace(login) || login.Length <= 4)
+                {
+                    throw new Exception("Incorrect login");
+                }
+                if (String.IsNullOrWhiteSpace(password) || password.Length < 8)
+                {
+                    throw new Exception("Incorrect password");
+                }
+                this.Users.Add(new User { Login = login, Password = password});
+                this.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         public virtual DbSet<Rents> Rents { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<User> Users { get; set; }

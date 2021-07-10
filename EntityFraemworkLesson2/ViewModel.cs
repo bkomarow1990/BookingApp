@@ -8,7 +8,11 @@ namespace EntityFraemworkLesson2
 {
     internal class ViewModel
     {
-        public Booking_GnidezEntities context = new Booking_GnidezEntities();
+        public Booking_GnidezEntities context;
+        public ViewModel()
+        {
+            context = new Booking_GnidezEntities();
+        }
         public User logined_user { get; set; }
 
 

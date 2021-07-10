@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EntityFraemworkLesson2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="LoginForm" Height="450" Width="800">
     <Grid>
         <StackPanel VerticalAlignment="Center">
             <TextBlock HorizontalAlignment="Center" FontSize="72" FontFamily="Helvetica" Margin="0,0,0,50">Booking</TextBlock>
             <TextBox FontSize="24" FontFamily="Helvetica" HorizontalContentAlignment="Left" Margin="50,0,50,20" Background="Gray" Name="loginTxtBox">Enter Login</TextBox>
             <PasswordBox FontSize="24" FontFamily="Helvetica" HorizontalContentAlignment="Left" Margin="50,0,50,0" Background="Gray" Name="passwordTxtBox"> </PasswordBox>
-            <Button x:Name="LoginBtn" HorizontalAlignment="Center" FontFamily="Helvetica" Margin="0,25,10,0" FontSize="24" Padding="20,20,20,20" VerticalContentAlignment="Center" Click="LoginBtn_Click"> LOGIN </Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                
+            <Button x:Name="LoginBtn" HorizontalAlignment="Center" FontFamily="Helvetica" Margin="0,25,10,0" FontSize="24" Padding="20,20,20,20" VerticalContentAlignment="Center" Click="LoginBtn_Click">LOGIN</Button>
+            <Button x:Name="RegisterBtn" HorizontalAlignment="Right" FontFamily="Helvetica" Margin="0,25,10,0" FontSize="24" Padding="20,20,20,20" Click="RegisterBtn_Click">REGISTER</Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

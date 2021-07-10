@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\Igor\Source\Repos\BookingApp\EntityFraemworkLesson2\obj\Debug\
+C:\Users\Igor\Source\Repos\BookingApp\EntityFraemworkLesson2\obj\Release\
 EntityFraemworkLesson2
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\Igor\Source\Repos\BookingApp\EntityFraemworkLesson2\App.xaml
 3-1037811201
 21750853300
@@ -16,5 +16,5 @@ C:\Users\Igor\Source\Repos\BookingApp\EntityFraemworkLesson2\App.xaml
 18-616193118
 MainAfterLogin.xaml;MainWindow.xaml;RegisterForm.xaml;
 
-False
+True
 

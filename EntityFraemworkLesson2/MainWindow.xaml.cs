@@ -31,7 +31,7 @@ namespace EntityFraemworkLesson2
         {
             try
             {
-                User tmp = view_model.context.Users.Where(el => el.Login == this.loginTxtBox.Text && el.Password == this.passwordTxtBox.Password).FirstOrDefault();
+                User tmp = view_model.context.GetLogin(this.loginTxtBox.Text, this.passwordTxtBox.Password);
                 if (tmp == null)
                 {
                     MessageBox.Show("Incorrect login or password");
@@ -41,11 +41,17 @@ namespace EntityFraemworkLesson2
                 MessageBox.Show($"You was logined as {tmp.Login}");
                 MainAfterLogin mainForm = new MainAfterLogin(this);
                 mainForm.ShowDialog();
-
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void RegisterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 reg_form = new Window1(this);
+            this.Hide();
+            reg_form.Show();
         }
     }
 }

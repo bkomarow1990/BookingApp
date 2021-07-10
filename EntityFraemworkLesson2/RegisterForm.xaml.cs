@@ -15,23 +15,29 @@ using System.Windows.Shapes;
 namespace EntityFraemworkLesson2
 {
     /// <summary>
-    /// Interaction logic for MainAfterLogin.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class MainAfterLogin : Window
+    public partial class Window1 : Window
     {
-        MainWindow mw;
-        public MainAfterLogin(MainWindow mw)
+        MainWindow mw = null;
+        public Window1(MainWindow mw)
         {
             InitializeComponent();
             this.mw = mw;
-            this.DataContext = mw.DataContext; 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void RegisterBtn_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel wm = (this.mw.DataContext as ViewModel);
-            wm.logined_user = null;
+            (mw.DataContext as ViewModel).context.Register(this.loginTxtBox.Text, this.passwordTxtBox.Password);
             this.Close();
+            mw.Show();
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            mw.Show();
         }
     }
 }

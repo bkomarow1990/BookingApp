@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="{Binding Path=logined_user.Login, Mode=OneWay}" FontSize="24"></TextBlock>
-        <Button> Sign out</Button>
+        <Button Click="Button_Click"> Sign out</Button>
         </StackPanel>
     </Grid>
 </Window>
