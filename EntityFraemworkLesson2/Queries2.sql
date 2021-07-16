@@ -3,7 +3,7 @@ use Booking_Gnidez;
 create table Users(
 	Id int primary key identity(1,1),
 	Login nvarchar(50) unique not null,
-	Password nvarchar(50) not null,
+	Password nvarchar(200) not null,
 )
 create table Rooms(
 	Id int primary key identity(1,1),
@@ -11,13 +11,12 @@ create table Rooms(
 	City nvarchar(100) not null,
 	Address nvarchar(100) not null
 )
-drop table Rent
+drop table Rents
 create table Rents(
 	Id int primary key identity(1,1),
 	IsAvailable bit not null default(0),
-	DateFrom datetime not null check(DateFrom >= getdate()),
-	DateTo datetime not null ,
-	check(DateTo > DateFrom),
+	DateFrom datetime not null,
+	DateTo datetime not null,
 	UserId int foreign key references Users(Id) not null,
 	RoomId int foreign key references Rooms(Id) not null,
 )

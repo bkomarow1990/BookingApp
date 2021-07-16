@@ -19,8 +19,8 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
-    <Property Name="DateFrom" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="DateTo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateFrom" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="None" />
+    <Property Name="DateTo" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="None" />
     <Property Name="UserId" Type="Int32" Nullable="false" />
     <Property Name="RoomId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Room" Relationship="Booking_GnidezModel.FK__Rents__RoomId__45F365D3" FromRole="Rent" ToRole="Room" />

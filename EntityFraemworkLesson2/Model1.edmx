@@ -11,8 +11,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IsAvailable" Type="bit" Nullable="false" />
-          <Property Name="DateFrom" Type="datetime" Nullable="false" />
-          <Property Name="DateTo" Type="datetime" Nullable="false" />
+          <Property Name="DateFrom" Type="datetime" Nullable="false" StoreGeneratedPattern="None" />
+          <Property Name="DateTo" Type="datetime" Nullable="false" StoreGeneratedPattern="None" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="RoomId" Type="int" Nullable="false" />
         </EntityType>
@@ -33,7 +33,7 @@
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Rents__RoomId__45F365D3">
+        <Association Name="FK__Rents__RoomId__5EBF139D">
           <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
           <End Role="Rents" Type="Self.Rents" Multiplicity="*" />
           <ReferentialConstraint>
@@ -45,7 +45,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rents__UserId__44FF419A">
+        <Association Name="FK__Rents__UserId__5DCAEF64">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Rents" Type="Self.Rents" Multiplicity="*" />
           <ReferentialConstraint>
@@ -61,11 +61,11 @@
           <EntitySet Name="Rents" EntityType="Self.Rents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Rents__RoomId__45F365D3" Association="Self.FK__Rents__RoomId__45F365D3">
+          <AssociationSet Name="FK__Rents__RoomId__5EBF139D" Association="Self.FK__Rents__RoomId__5EBF139D">
             <End Role="Rooms" EntitySet="Rooms" />
             <End Role="Rents" EntitySet="Rents" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rents__UserId__44FF419A" Association="Self.FK__Rents__UserId__44FF419A">
+          <AssociationSet Name="FK__Rents__UserId__5DCAEF64" Association="Self.FK__Rents__UserId__5DCAEF64">
             <End Role="Users" EntitySet="Users" />
             <End Role="Rents" EntitySet="Rents" />
           </AssociationSet>
@@ -93,8 +93,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
-          <Property Name="DateFrom" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DateTo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateFrom" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="None" />
+          <Property Name="DateTo" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="None" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="RoomId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Room" Relationship="Booking_GnidezModel.FK__Rents__RoomId__45F365D3" FromRole="Rent" ToRole="Room" />

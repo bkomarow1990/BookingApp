@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,21 +27,38 @@ namespace EntityFraemworkLesson2
             InitializeComponent();
             this.DataContext = view_model;
         }
+        static string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
 
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                User tmp = view_model.context.GetLogin(this.loginTxtBox.Text, this.passwordTxtBox.Password);
+                User tmp = view_model.context.GetLogin(this.loginTxtBox.Text, ComputeSha256Hash(this.passwordTxtBox.Password));
                 if (tmp == null)
                 {
                     MessageBox.Show("Incorrect login or password");
                     return;
                 }
-                view_model.logined_user = tmp;
+                ViewModel.logined_user = tmp;
                 MessageBox.Show($"You was logined as {tmp.Login}");
                 MainAfterLogin mainForm = new MainAfterLogin(this);
-                mainForm.ShowDialog();
+                this.Hide();
+                mainForm.Show();
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);

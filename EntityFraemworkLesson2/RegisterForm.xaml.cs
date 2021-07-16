@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,11 +30,27 @@ namespace EntityFraemworkLesson2
 
         private void RegisterBtn_Click(object sender, RoutedEventArgs e)
         {
-            (mw.DataContext as ViewModel).context.Register(this.loginTxtBox.Text, this.passwordTxtBox.Password);
+            (mw.DataContext as ViewModel).context.Register(this.loginTxtBox.Text, ComputeSha256Hash(this.passwordTxtBox.Password));
             this.Close();
             mw.Show();
         }
+        static string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
 
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

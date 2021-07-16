@@ -46,3 +46,5 @@ C:\Users\Igor\Source\Repos\BookingApp\EntityFraemworkLesson2\obj\Debug\EntityFra
 C:\Users\Igor\Source\Repos\BookingApp\EntityFraemworkLesson2\obj\Debug\EntityFraemworkLesson2.pdb
 C:\Users\Igor\Source\Repos\BookingApp\EntityFraemworkLesson2\obj\Debug\RegisterForm.g.cs
 C:\Users\Igor\Source\Repos\BookingApp\EntityFraemworkLesson2\obj\Debug\RegisterForm.baml
+C:\Users\Igor\Source\Repos\BookingApp\EntityFraemworkLesson2\obj\Debug\ShowRents.g.cs
+C:\Users\Igor\Source\Repos\BookingApp\EntityFraemworkLesson2\obj\Debug\ShowRents.baml

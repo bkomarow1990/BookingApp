@@ -5,15 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EntityFraemworkLesson2"
         mc:Ignorable="d"
-        Title="MainAfterLogin" Height="450" Width="800">
+        Title="MainAfterLogin" Height="450" Width="800" Closed="Window_Closed">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="{Binding Path=logined_user.Login, Mode=OneWay}" FontSize="24"></TextBlock>
-        <Button Click="Button_Click"> Sign out</Button>
-        </StackPanel>
+        <DockPanel >
+            <TextBlock Text="{Binding Path=logined_user.Login, Mode=OneWay}" FontSize="12" DockPanel.Dock="Right" Margin="0,0,20,0" VerticalAlignment="Center"></TextBlock>
+            <Button Click="Button_Click" HorizontalAlignment="Right" DockPanel.Dock="Right" Height="25" Margin="0,0,0,-0.2" VerticalAlignment="Bottom">Sign out</Button>
+        </DockPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Column="0" LastChildFill="False">
+                <Label DockPanel.Dock="Top">Enter Area from:</Label>
+                <TextBox Text="{Binding Room.AreaFrom}" PreviewTextInput="TextBox_PreviewTextInput" DockPanel.Dock="Top"></TextBox>
+                <Label DockPanel.Dock="Top">Enter Area to:</Label>
+                <TextBox Text="{Binding Room.AreaTo}" PreviewTextInput="TextBox_PreviewTextInput" DockPanel.Dock="Top"></TextBox>
+                <Label DockPanel.Dock="Top">Enter City:</Label>
+                <TextBox Text="{Binding Room.City}"  DockPanel.Dock="Top"></TextBox>
+                <Label DockPanel.Dock="Top">Enter DateFrom:</Label>
+                <DatePicker DockPanel.Dock="Top" Name="FromDatePicker" SelectedDate="{Binding Room.DateFrom}"></DatePicker>
+                <Label DockPanel.Dock="Top">Enter DateTo:</Label>
+                <DatePicker DockPanel.Dock="Top" Name="ToDatePicker" SelectedDate="{Binding Room.DateTo}"></DatePicker>
+                <Button DockPanel.Dock="Top" Margin="0,10,0,0" Height="50" Name="ShowBtn" Click="ShowBtn_Click" FontFamily="Helvetica" FontWeight="Bold" FontSize="23"> SHOW </Button>
+            </DockPanel>
+            <ListBox Grid.Column="1" Name="itemsListBox">
+                
+            </ListBox>
+            <Grid  Grid.ColumnSpan="2" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            <Button Grid.Row="1" Grid.Column="0"  Name="ShowRentsBtn" Click="ShowRentsBtn_Click"> Show My Rents</Button>
+            <Button Grid.Row="1" Grid.Column="1" Name="RentBtn" Click="RentBtn_Click"> Rent </Button>
+                
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

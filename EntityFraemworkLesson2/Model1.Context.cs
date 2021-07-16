@@ -26,28 +26,30 @@ namespace EntityFraemworkLesson2
         {
             throw new UnintentionalCodeFirstException();
         }
-
-        internal User GetLogin(string login, string password)
+        public void Register(string login, string password)
         {
-            return this.Users.Where(e => e.Login == login && e.Password == password).First();
-        }
-        internal void Register(string login, string password)
-        {
-            try {
-                if (String.IsNullOrWhiteSpace(login) || login.Length <= 4)
-                {
-                    throw new Exception("Incorrect login");
-                }
-                if (String.IsNullOrWhiteSpace(password) || password.Length < 8)
-                {
-                    throw new Exception("Incorrect password");
-                }
-                this.Users.Add(new User { Login = login, Password = password});
+            //try
+            //{
+                Users.Add(new User { Login = login, Password = password});
+                MessageBox.Show("Added");
                 this.SaveChanges();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+        }
+
+
+        public User GetLogin(string login, string password)
+        {
+            try
+            {
+                return Users.Where(e => e.Login == login && e.Password == password).First();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                return null;
             }
         }
 
